@@ -1,42 +1,36 @@
+import java.util.UUID;
+
 public class UserAccount {
-    private UID UserId;
-    private String Email; 
-    private String Name; 
-    private String Password;
+    private UUID userId;
+    private String email;
+    private String name;
+    private String password;
 
-    public UserAccount(UID userId, String userName, String email, String password) {
-        this.UserId = userId;
-        this.Name = Name;
-        this.Email = email;
-        this.Password = password;
+    public UserAccount(UUID userId, String name, String email, String password) {
+        this.userId = userId;
+        this.name = name;
+        this.email = email;
+        this.password = password;
     }
 
-    // Getters 
-    private UID getUserId() {
-        return UserId;
-    }
-    private String getEmail() {
-        return Email;
-    }
-    private String getName() {
-        return Name;
-    }
-    private String getPassword() {
-        return Password;
-    }
+    // Getters
+    public UUID getUserId() { return userId; }
+    public String getEmail() { return email; }
+    public String getName() { return name; }
+    public String getPassword() { return password; }
 
     // Setters
-    private void setUserId(UID userId) {
-        this.UserId = userId;
-    }
-    private void setEmail(String email) {
-        this.Email = email;
-    }
-    private void setName(String name) {
-        this.Name = name;
-    }
-    private void setPassword(String password) {
-        this.Password = password;
-    }
+    public void setUserId(UUID userId) { this.userId = userId; }
+    public void setEmail(String email) { this.email = email; }
+    public void setName(String name) { this.name = name; }
+    public void setPassword(String password) { this.password = password; }
 
+    @Override
+    public String toString() {
+        return "UserAccount{" +
+                "userId=" + userId +
+                ", name='" + name + '\'' +
+                ", email='" + email + '\'' +
+                '}';
+    }
 }

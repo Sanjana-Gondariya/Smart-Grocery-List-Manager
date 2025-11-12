@@ -3,7 +3,7 @@ import java.util.ArrayList;
 public class List {
     private ArrayList<Item> items;
 
-    public ShoppingList() {
+    public List() {
         this.items = new ArrayList<>();
     }
 
