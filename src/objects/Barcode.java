@@ -30,7 +30,6 @@ public class Barcode {
     }
 
     /**
-     * Extracts cost from barcode (stub - requires ZXing library via Maven).
      * @return extracted cost as a double
      */
     public double extractCost() {
