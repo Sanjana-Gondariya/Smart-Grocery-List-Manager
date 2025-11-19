@@ -1,9 +1,6 @@
-package main;
-
 import java.util.ArrayList; 
 import java.util.List;      
 import java.util.Scanner;
-import objects.*;
 
 public class Main {
 
@@ -24,7 +21,6 @@ public class Main {
                 String name = sc.next();
                 int q = sc.nextInt();
                 
-                // Use the standard 'add' method of ArrayList
                 itemsList.add(new Item(name, q)); 
                 System.out.println("added: " + name);
 

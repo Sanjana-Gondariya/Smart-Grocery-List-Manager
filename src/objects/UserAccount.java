@@ -1,5 +1,3 @@
-package objects;
-
 import java.util.UUID;
 
 public class UserAccount {

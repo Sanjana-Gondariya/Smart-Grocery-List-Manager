@@ -1,7 +1,6 @@
-package objects;
-
 public class Budget{
     public double budget;
+    
     public void updateBudget(double budgetToSet){
         this.budget = budgetToSet;
     }

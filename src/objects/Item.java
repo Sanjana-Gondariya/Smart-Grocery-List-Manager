@@ -1,5 +1,3 @@
-package objects;
-
 public class Item {
     public String Name;
     public int quantity;
