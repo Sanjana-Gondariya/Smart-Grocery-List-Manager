@@ -2,6 +2,13 @@ package objects;
 
 public class Budget{
     public double budget;
+    public double moneySpent;
+
+    public Budget(double budget) {
+        this.budget = budget;
+        this.moneySpent = 0;
+    }
+
     public void updateBudget(double budgetToSet){
         this.budget = budgetToSet;
     }
@@ -10,8 +17,8 @@ public class Budget{
         return this.budget;
     }
 
-    public void calculateMoneySpent(){ //determine what should be returned
-
+    public void updateMoneySpent(double amount){
+        this.moneySpent += amount;
     }
 
 }

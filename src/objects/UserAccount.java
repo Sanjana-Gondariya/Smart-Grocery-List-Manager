@@ -1,61 +1,69 @@
 package objects;
 
+import tools.EmailValidator;
+import tools.PasswordHasher;
 import java.util.UUID;
 
 public class UserAccount {
-    private UUID userId;
+    // UUID should never change for a user
+    private final UUID userID;
     private String email;
     private String name;
-    private String password;
+    private String passwordHash;
 
-    public UserAccount(UUID userId, String name, String email, String password) {
-        this.userId = userId;
+    public UserAccount(UUID userID, String name, String email, String password) {
+        // Disallow empty values and validate email format via regex
+        if (!EmailValidator.isValidEmail(email) || (name == null || name.isBlank())
+        || (password == null || password.isBlank()) || (userID == null)) {
+            throw new IllegalArgumentException("Invalid arguments.");
+        }
+        // Generate UUID (8-4-4-4-12 hexadecimal digits)
+        this.userID = UUID.randomUUID();
         this.name = name;
         this.email = email;
-        this.password = password;
+        // Hash password instead of storing directly
+        this.passwordHash = PasswordHasher.hashPassword(password);
+    }
+
+    // Check if entered password matches stored hash
+    private void checkPassword(String password) {
+        if (PasswordHasher.verifyPassword(password, this.passwordHash)) {
+            System.out.println("Correct password.");
+        }
+        else {
+            System.out.println("Incorrect password.");
+        }
     }
 
     // Getters
-    public UUID getUserId() {
-        return userId;
+    private UUID getUserID() {
+        return userID;
     }
 
-    public String getEmail() {
+    private String getEmail() {
         return email;
     }
 
-    public String getName() {
+    private String getName() {
         return name;
     }
 
-    public String getPassword() {
-        return password;
+    private String getPasswordHash() {
+        return passwordHash;
     }
 
     // Setters
-    public void setUserId(UUID userId) {
-        this.userId = userId;
-    }
-
-    public void setEmail(String email) {
+    private void setEmail(String email) {
         this.email = email;
     }
 
-    public void setName(String name) {
+    private void setName(String name) {
         this.name = name;
     }
 
-    public void setPassword(String password) {
-        this.password = password;
+    private void setPasswordHash(String passwordHash) {
+        this.passwordHash = passwordHash;
     }
 
-    @Override
-    public String toString() {
-        return "UserAccount{" +
-                "userId=" + userId +
-                ", name='" + name + '\'' +
-                ", email='" + email + '\'' +
-                '}';
-    }
 }
 
